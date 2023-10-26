@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet"/>
+    <title>App Dictamen Tecnico </title>
+</head>
+
+  <video id="Video1" class="bgvid back" autoplay="true" muted="muted" preload="auto" loop>
+      <source src="{% static "img/congreso.mp4" %}" type="video/mp4">
+  </video>
+  <div class="inner-container"> 
+    {{ error}}
+    <form action="/signin/" method="POST">
+       
+   
+        <div class="box">
+            <center><img src="{% static "img/Logo Congreso.png" %}" alt="" width="150px" height="150px"></center>
+            {% csrf_token %}
+         
+          <input type="text" placeholder="Usuario" name="username" id="username" class="form-control" />
+          <input type="password" placeholder="password" id="password" class="form-control" name="password"/>
+          <button><span class="len">Ingresar</span></button> 
+         
+        </div>
+      
+    </form>
+
+  </div>
+  
+  {% comment %} <section >
+    <div class="cen">
+
+      <p>Dirección de Informatica y Comunicaciones <br>  <br>  <span  class="len">Congreso de la República de Guatemala</span></p><br>
+     
+    </div>
+  </section> {% endcomment %}
+  
+</div>
+
+
+
+
+{% endblock %}

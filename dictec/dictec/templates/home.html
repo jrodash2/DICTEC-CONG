@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<ul>
+  {% for dictamen in dictamens %}
+
+  <li>{{dictamen.Marca}}</li>
+
+  {% endfor %}
+</ul>
+
+
+
+{% endblock %}
