@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from .forms import DictamenForm
-from .models import Dictamen
+from .models import Dictamenfinal
 
 # Create your views here.
 
@@ -41,8 +41,21 @@ def home(request):
     return render(request, 'home.html')
 
 def dictamen(request):
-    dictamens = Dictamen.objects.all()
+    dictamens = Dictamenfinal.objects.all()
     return render(request, 'dictamen.html', {'dictamens': dictamens})
+
+def dictamen_creado(request):
+    dictamens = Dictamenfinal.objects.all()
+    return render(request, 'dictamen_creado.html', {'dictamens': dictamens})
+
+def dictamen_pendiente(request):
+    dictamens = Dictamenfinal.objects.all()
+    return render(request, 'dictamen_pendiente.html', {'dictamens': dictamens})
+
+def dictamen_imprimir(request):
+    dictamens = Dictamenfinal.objects.all()
+    return render(request, 'dictamen_imprimir.html', {'dictamens': dictamens})
+
 
 def create_dictamen(request):
     
@@ -60,7 +73,7 @@ def create_dictamen(request):
     
 
 def dicdetalle(request, dic_id):
-    dictamen = get_object_or_404(Dictamen, pk=dic_id)
+    dictamen = get_object_or_404(Dictamenfinal, pk=dic_id)
     return render(request, 'dicdetalle.html', {'dictamen': dictamen})  
 
 def dashboard(request):

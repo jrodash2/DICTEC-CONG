@@ -231,9 +231,11 @@
                                                
                                   
                         <a href="{% url 'dicdetalle' dictamen.id %}">            
-                           
-                            <strong class="text-white-dark">{{dictamen.Titulo}}</strong>
-                         
+                            {% if dictamen.Imprimir %}
+                            <strong class="text-info">{{dictamen.Titulo}}</strong>
+                            {% else %}
+                            <h2 style="color: aqua;">{{dictamen.Titulo}}</h2>
+                            {% endif %}
                         </a>
                         <h3>{{dictamen.Direccion}}</h3>
                                             

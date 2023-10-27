@@ -1,9 +1,9 @@
 
 from django.contrib import admin
-from .models import Dictamen
+from .models import Dictamenfinal
 
-class Dicadmin(admin.ModelAdmin):
+class Dicadminfinal(admin.ModelAdmin):
     readonly_fields =("Creacion", )
 
 # Register your models here.
-admin.site.register(Dictamen, Dicadmin)
+admin.site.register(Dictamenfinal, Dicadminfinal)

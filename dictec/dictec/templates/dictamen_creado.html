@@ -229,13 +229,14 @@
                        <div class="product-item" category="laptops">
                         
                                                
-                                  
-                        <a href="{% url 'dicdetalle' dictamen.id %}">            
-                           
-                            <strong class="text-white-dark">{{dictamen.Titulo}}</strong>
-                         
-                        </a>
-                        <h3>{{dictamen.Direccion}}</h3>
+                                    <a href="{% url 'dicdetalle' dictamen.id %}">            
+                                    {% if dictamen.Creado %}
+                                    <strong class="text-primary">{{dictamen.Titulo}}</strong>
+                                    {% else %}
+                                    <h2 style="color: aqua;">{{dictamen.Titulo}}</h2>
+                                    {% endif %}
+                                </a>
+                                <h3>{{dictamen.Direccion}}</h3>
                                             
                         
                         </div>
