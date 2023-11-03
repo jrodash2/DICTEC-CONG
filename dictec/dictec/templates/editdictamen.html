@@ -1,0 +1,460 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+<div class="animate__animated p-6" >
+    <!-- start main content section -->
+    
+    <div >
+       
+        <div class="flex flex-col gap-2.5 xl:flex-row">
+            <div class="panel flex-1 px-0 py-6 ltr:lg:mr-6 rtl:lg:ml-6">
+                <div class="flex flex-wrap justify-between px-4">
+                    <div class="mb-6 w-full lg:w-1/2">
+                        <div class="flex shrink-0 items-center text-black dark:text-white">
+                            <img src="{% static 'img/Logo Congreso2.png' %}" alt="image" class="w-15" />
+                        </div>
+                        <div class="mt-6 space-y-1 text-gray-500 dark:text-gray-400">
+                         
+                          
+                        </div>
+                        
+                        
+                    </div>
+                                         
+                    <div class="w-full lg:w-1/2 lg:max-w-fit">
+                        <button>Actualizar</button>
+                        <div class="flex items-center">
+                            <label for="number" class="mb-0 flex-1 ltr:mr-2 rtl:ml-2">Titulo Dictamen:</label>
+                            
+                            <input class="form-input w-2/3 lg:w-[250px]" type="text" name="Nombre" value="{{dictamen.Titulo}}" maxlength="80" required="" id="id_Nombre">
+                        </div>
+                        
+                        <div class="mt-4 flex items-center">
+                            <label for="invoiceLabel" class="mb-0 flex-1 ltr:mr-2 rtl:ml-2">Nombre Responsable:</label>
+                            <input
+                                id="invoiceLabel"
+                                type="text"
+                                name="inv-label"
+                                class="form-input w-2/3 lg:w-[250px]"
+                                
+                            value="{{dictamen.Nombre}}"
+                            />
+                        </div>
+                        <div class="mt-4 flex items-center">
+                            <label for="invoiceLabel" class="mb-0 flex-1 ltr:mr-2 rtl:ml-2">Oficina:</label>
+                            <input
+                                id="invoiceLabel"
+                                type="text"
+                                name="inv-label"
+                                class="form-input w-2/3 lg:w-[250px]"
+                                
+                            value="{{dictamen.Oficina}}"
+                            />
+                        </div>
+                        <div class="mt-4 flex items-center">
+                            <label for="invoiceLabel" class="mb-0 flex-1 ltr:mr-2 rtl:ml-2">Direccion:</label>
+                            <input
+                                id="invoiceLabel"
+                                type="text"
+                                name="inv-label"
+                                class="form-input w-2/3 lg:w-[250px]"
+                                
+                            value="{{dictamen.Direccion}}"
+                            />
+                        </div>
+                    </div>
+                
+                </div>
+                <hr class="my-6 border-[#e0e6ed] dark:border-[#1b2e4b]" />
+                <div class="mt-8 px-4">
+                    <div class="flex flex-col justify-between lg:flex-row">
+                        <div class="mb-6 w-full lg:w-1/2 ltr:lg:mr-6 rtl:lg:ml-6">
+                            <div class="text-lg font-semibold">Información del Equipo: </div>
+                            <div class="mt-4 flex items-center">
+                                <label for="invoiceLabel" class="mb-0 flex-1 ltr:mr-2 rtl:ml-2">Tipo de Equipo:</label>
+                                <input
+                                    id="invoiceLabel"
+                                    type="text"
+                                    name="inv-label"
+                                    class="form-input w-2/3 lg:w-[250px]"
+                                    
+                                value="{{dictamen.Tipo_Equipo}}"
+                                />
+                            </div>
+                            <div class="mt-4 flex items-center">
+                                <label for="invoiceLabel" class="mb-0 flex-1 ltr:mr-2 rtl:ml-2">Marca:</label>
+                                <input
+                                    id="invoiceLabel"
+                                    type="text"
+                                    name="inv-label"
+                                    class="form-input w-2/3 lg:w-[250px]"
+                                    
+                                value="{{dictamen.Marca}}"
+                                />
+                            </div>
+                          
+                        </div>
+                        <div class="w-full lg:w-1/2">
+                            <div class="text-lg font-semibold">          </div><br>
+                            <div class="mt-4 flex items-center">
+                                <label for="invoiceLabel" class="mb-0 flex-1 ltr:mr-2 rtl:ml-2">Modelo:</label>
+                            <input
+                                id="invoiceLabel"
+                                type="text"
+                                name="inv-label"
+                                class="form-input w-2/3 lg:w-[250px]"
+                                
+                            value="{{dictamen.Modelo}}"
+                            />
+                            </div>
+                            <div class="mt-4 flex items-center">
+                                <label for="invoiceLabel" class="mb-0 flex-1 ltr:mr-2 rtl:ml-2">Número de Serie:</label>
+                                <input
+                                    id="invoiceLabel"
+                                    type="text"
+                                    name="inv-label"
+                                    class="form-input w-2/3 lg:w-[250px]"
+                                    
+                                value="{{dictamen.Num_Serie}}"
+                                />
+                            </div>
+                           
+                            <div class="mt-4 flex items-center">
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              
+                <div class="mt-8 px-4">
+                    <div>
+                        <label for="notes">Problema:</label>
+                        <input
+                        id="invoiceLabel"
+                        type="text"
+                        name="inv-label"
+                        class="form-input w-2/3 lg:w-[800px]"
+                        
+                    value="{{dictamen.Problema}}"
+                    />
+                    </div>
+                    <div>
+                        <label for="notes">Analisis:</label>
+                        <input
+                        id="invoiceLabel"
+                        type="text"
+                        name="inv-label"
+                        class="form-input w-2/3 lg:w-[800px]"
+                        
+                    value="{{dictamen.Analisis}}"
+                    />
+                    </div>
+                    <div>
+                        <label for="notes">Proceso Realizado para el diagnostico:</label>
+                        <input
+                        id="invoiceLabel"
+                        type="text"
+                        name="inv-label"
+                        class="form-input w-2/3 lg:w-[800px]"
+                        
+                    value="{{dictamen.Proceso_Realizado}}"
+                    />
+                    </div>
+                    <div>
+                        <label for="notes">Dictamen Final:</label>
+                        <input
+                        id="invoiceLabel"
+                        type="text"
+                        name="inv-label"
+                        class="form-input w-2/3 lg:w-[800px]"
+                        
+                    value="{{dictamen.Dictamen_Final}}"
+                    />
+                    
+                    </div>
+                  
+                </div>
+            </div>
+            <div class="mt-6 w-full xl:mt-0 xl:w-96">
+                <div class="panel mb-5">
+                  
+                    
+                    <div class="mt-4">
+                        <div>
+                            <label for="shipping-charge">Comentario para el Tecnico: </label>
+                            <input
+                                id="shipping-charge"
+                                type="text"
+                                name="shipping-charge"
+                                class="form-input w-2/3 lg:w-[250px]"
+                                value="{{dictamen.Caracteristicas}}"
+                                
+                            />
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                <div class="panel">
+                    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-1">
+                        
+                        <button type="button" class="btn btn-primary w-full gap-2">
+                            
+                            <input
+                            id="invoiceLabel"
+                            type="checkbox"
+                            name="inv-label"
+                            class="form-checkbox"
+                            
+                        value="{{dictamen.Creado}}"
+                        / >
+                                Creado
+                            </button>
+
+                        <button type="button" class="btn btn-warning w-full gap-2">
+                            
+                        <input
+                        id="invoiceLabel"
+                        type="checkbox"
+                        name="inv-label"
+                        class="form-checkbox"
+                        
+                    value="{{dictamen.Pendiente}}"
+                    />
+                            Pendiente
+                        </button>
+
+                        <button type="button" class="btn btn-info w-full gap-2">
+                            
+                            <input
+                            id="invoiceLabel"
+                            type="checkbox"
+                            name="inv-label"
+                            class="form-checkbox"
+                            
+                        value="{{dictamen.Imprimir}}"
+                        />
+                                Imprimir
+                            </button>
+                            <button type="button" class="btn btn-danger w-full gap-2">
+                            
+                                <input
+                                id="invoiceLabel"
+                                type="checkbox"
+                                name="inv-label"
+                                class="form-checkbox"
+                                
+                            value="{{dictamen.Finalizado}}"
+                            />
+                                    Finalizado
+                                </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button>Actualizar</button> 
+      
+    </div>
+    <!-- end main content section -->
+
+
+
+
+</div>
+
+</form>
+
+
+
+
+<form method="POST">
+    {% csrf_token %}
+                      <label for="id_Titulo">Titulos: </label>
+                      
+                        
+                        <input type="text" name="Titulo" value="{{dictamen.Titulo}}" maxlength="200" required="" id="id_Titulo">
+                        
+                                            
+                    
+                      <label for="id_IDuser">IDuser:</label>
+                      
+                        
+                        <input type="text" name="IDuser" value="1234254" maxlength="20" required="" id="id_IDuser">
+                        
+                        
+                      
+                    
+                  
+                    
+                      <label for="id_Nombre">Nombre:</label>
+                      
+                        
+                        <input type="text" name="Nombre" value="{{dictamen.Nombre}}" maxlength="80" required="" id="id_Nombre">
+                        
+                        
+                      
+                    
+                  
+                    
+                      <label for="id_Oficina">Oficina:</label>
+                      
+                        
+                        <input type="text" name="Oficina" value="Protocolo" maxlength="80" required="" id="id_Oficina">
+                        
+                        
+                      
+                    
+                  
+                    
+                      <label for="id_Direccion">Direccion:</label>
+                      
+                        
+                        <input type="text" name="Direccion" value="Congreso" maxlength="80" required="" id="id_Direccion">
+                        
+                        
+                      
+                    
+                  
+                    
+                      <label for="id_Tipo_Equipo">Tipo Equipo:</label>
+                      
+                        
+                        <input type="text" name="Tipo_Equipo" value="PC" maxlength="80" required="" id="id_Tipo_Equipo">
+                        
+                        
+                      
+                    
+                  
+                    
+                      <label for="id_Marca">Marca:</label>
+                      
+                        
+                        <input type="text" name="Marca" value="Lenovo" maxlength="80" required="" id="id_Marca">
+                        
+                        
+                      
+                    
+                  
+                    
+                      <label for="id_Modelo">Modelo:</label>
+                      
+                        
+                        <input type="text" name="Modelo" value="eidj35fgsdf" maxlength="80" required="" id="id_Modelo">
+                        
+                        
+                      
+                    
+                  
+                    
+                      <label for="id_Num_Serie">Num Serie:</label>
+                      
+                        
+                        <input type="text" name="Num_Serie" value="34566" maxlength="80" required="" id="id_Num_Serie">
+                        
+                        
+                      
+                    
+                  
+                    
+                      <label for="id_Caracteristicas">Caracteristicas:</label>
+                      
+                        
+                        <input type="text" name="Caracteristicas" value="slkkdjjjjsdfafd" maxlength="200" required="" id="id_Caracteristicas">
+                        
+                        
+                      
+                    
+                  
+                    
+                      <label for="id_Problema">Problema:</label>
+                      
+                        
+                        <textarea name="Problema" cols="40" rows="10" maxlength="1000" required="" id="id_Problema">sdf</textarea>
+                        
+                        
+                      
+                    
+                  
+                    
+                      <label for="id_Analisis">Analisis:</label>
+                      
+                        
+                        <textarea name="Analisis" cols="40" rows="10" maxlength="1000" required="" id="id_Analisis">sdfasd</textarea>
+                        
+                        
+                      
+                    
+                  
+                    
+                      <label for="id_Proceso_Realizado">Proceso Realizado:</label>
+                      
+                        
+                        <textarea name="Proceso_Realizado" cols="40" rows="10" maxlength="1000" required="" id="id_Proceso_Realizado">sdfasfd</textarea>
+                        
+                        
+                      
+                    
+                  
+                    
+                      <label for="id_Dictamen_Final">Dictamen Final:</label>
+                      
+                        
+                        <textarea name="Dictamen_Final" cols="40" rows="10" maxlength="1000" required="" id="id_Dictamen_Final">gsdgasd</textarea>
+                        
+                        
+                      
+                    
+                  
+                    
+                      <label for="id_Creado">Creado:</label>
+                      
+                        
+                        <input type="checkbox" name="Creado" id="id_Creado">
+                        
+                        
+                      
+                    
+                  
+                    
+                      <label for="id_Pendiente">Pendiente:</label>
+                      
+                        
+                        <input type="checkbox" name="Pendiente" id="id_Pendiente">
+                        
+                        
+                      
+                    
+                  
+                    
+                      <label for="id_Imprimir">Imprimir:</label>
+                      
+                        
+                        <input type="checkbox" name="Imprimir" id="id_Imprimir" checked="">
+                        
+                        
+                      
+                    
+                  
+                    
+                      <label for="id_Finalizado">Finalizado:</label>
+                      
+                        
+                        <input type="checkbox" name="Finalizado" id="id_Finalizado">
+                        
+                        
+                          
+                        
+                      
+                    
+                                 
+
+                                          <button>Actualizar</button> 
+                  </form>
+
+
+
+{% endblock %}

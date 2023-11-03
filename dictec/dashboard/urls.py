@@ -28,6 +28,7 @@ urlpatterns = [
        path('imprimir/', views.dictamen_imprimir, name='dictamen_imprimir',),
        path('dictamen/create/', views.create_dictamen, name='crear_dictamen',),
        path('dictamen/<int:dic_id>/', views.dicdetalle, name='dicdetalle',),
+       path('dicdetalle/<int:dic_id>/', views.editdictamen, name='editdictamen',),
        path('logout/', views.signout, name='logout',),
        path('signin/', views.signin, name='signin',),
        path('dashboard/', views.dashboard, name='dashboard',)
