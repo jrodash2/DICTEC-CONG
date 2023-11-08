@@ -73,9 +73,15 @@ def create_dictamen(request):
     
 
 def dicdetalle(request, dic_id):
-    dictamen = get_object_or_404(Dictamenfinal, pk=dic_id)
-   
-    return render(request, 'dicdetalle.html', {'dictamen': dictamen})  
+    if request.method == 'GET':
+        dictamen = get_object_or_404(Dictamenfinal, pk=dic_id)
+        form = DictamenForm(instance=dictamen)
+        return render(request, 'dicdetalle.html', {'dictamen': dictamen, 'form': form})   
+    else:
+        dictamen = get_object_or_404(Dictamenfinal, pk=dic_id)
+        form = DictamenForm(request.POST, instance=dictamen)
+        form.save()
+        return redirect('dictamen')
 
 
 def editdictamen(request, dic_id):
@@ -84,11 +90,14 @@ def editdictamen(request, dic_id):
         form = DictamenForm(instance=dictamen)
         return render(request, 'editdictamen.html', {'dictamen': dictamen, 'form': form})  
     else:
-        dictamen = get_object_or_404(Dictamenfinal, pk=dic_id)
-        form = DictamenForm(request.POST, instance=dictamen)
-        form.save()
-        return redirect('dictamen')
-
+        try:
+            dictamen = get_object_or_404(Dictamenfinal, pk=dic_id)
+            form = DictamenForm(request.POST, instance=dictamen)
+            form.save()
+            return redirect('dictamen')
+        except: ValueError
+        return render(request, 'editdictamen.html', {'dictamen': dictamen, 'form': form, 'error': "Error actualiando Dictamen"})
+    
 def dashboard(request):
     return render(request, 'dashboard.html')
 

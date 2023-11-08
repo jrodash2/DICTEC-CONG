@@ -22,6 +22,7 @@ class Dictamen(models.Model):
   
   def __str__(self):
     return self.Titulo + ' - ' + self.user.username
+
   
 class Dictamenfinal(models.Model):
   Titulo = models.CharField(max_length=200)
@@ -44,6 +45,7 @@ class Dictamenfinal(models.Model):
   Imprimir = models.BooleanField(default=False)
   Creado = models.BooleanField(default=False)
   Finalizado = models.BooleanField(default=False)
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
   
   def __str__(self):
     return self.Titulo + ' - ' + self.user.username
