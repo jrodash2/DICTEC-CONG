@@ -228,11 +228,14 @@
                        <div class="create-route" href="{% url 'dicdetalle' dictamen.id %}">
                        <div class="product-item" category="laptops">
                         
-                                     
+                                               
+                                  
                         <a href="{% url 'dicdetalle' dictamen.id %}">            
-                           <ul>
-                            <li>{{dictamen.Titulo}}</li>
-                           </ul>
+                            {% if dictamen.Finalizado %}
+                            <strong class="text-danger">{{dictamen.Titulo}}</strong>
+                            {% else %}
+                            <h2 style="color: aqua;">{{dictamen.Titulo}}</h2>
+                            {% endif %}
                         </a>
                         <h3>{{dictamen.Direccion}}</h3>
                                             

@@ -3,14 +3,57 @@
 
 {% block content %}
 
-
-
+<form method="POST">
+    {% csrf_token %}
+    {{form}}
+    <BUtton>ACTUALI</BUtton>
+    
+</form>
+<form action="{% url 'complete_dic' dictamen.id %}" method="POST">
+    {% csrf_token %}
+<button type="button" class="btn btn-success gap-2">
+  
+    Enviar al Archivo
+</button>
+</form>
+<form action="{% url 'deleted_dic' dictamen.id %}" method="POST">
+    {% csrf_token %}
+    <button type="button" class="btn btn-secondary gap-2">
+  
+        Elimina
+    </button>
+</form>
 
 <form action="/dictamen/" method="POST" class="DictamenForm">
         {% csrf_token %}
 <div class="animate__animated p-6" >
     <!-- start main content section -->
-    
+    <div class="mb-6 flex flex-wrap items-center justify-center gap-4 lg:justify-end">
+        <a href="/dictamen/"><button type="button" class="btn btn-info gap-2" >
+            
+          Dictamenes
+      </button></a>  
+
+          <button type="button" class="btn btn-primary gap-2" @click="print">
+           
+              Imprimir
+          </button>
+
+          <button type="button" class="btn btn-success gap-2">
+            
+              Enviar al Archivo
+          </button>
+
+          <a href="apps-invoice-add.html" class="btn btn-secondary gap-2">
+            
+              Eliminar
+          </a>
+
+          <a href="{% url 'editdictamen' dictamen.id %}" class="btn btn-warning gap-2">
+             
+              Editar
+          </a>
+      </div>
     <div >
        
         <div class="flex flex-col gap-2.5 xl:flex-row">
@@ -211,7 +254,7 @@
                             id="id_Creado"
                             type="checkbox"
                             name="Creado"
-                            class="form-checkbox"
+                            class="checkbox"
                             
                         value="{{dictamen.Creado}}"
                         / >
@@ -224,7 +267,7 @@
                         id="id_Pendiente"
                         type="checkbox"
                         name="Pendiente"
-                        class="form-checkbox"
+                        class="checkbox"
                         
                     value="{{dictamen.Pendiente}}"
                     />
@@ -237,7 +280,7 @@
                             id="Imprimir"
                             type="checkbox"
                             name="Imprimir"
-                            class="form-checkbox"
+                            class="checkbox"
                             
                         value="{{dictamen.Imprimir}}"
                         />
@@ -249,7 +292,7 @@
                                 id="id_Finalizado"
                                 type="checkbox"
                                 name="Finalizado"
-                                class="form-checkbox"
+                                class="checkbox"
                                 
                             value="{{dictamen.Finalizado}}"
                             />
