@@ -43,7 +43,7 @@ class Dictamenfinal(models.Model):
   Datecompleted = models.DateTimeField(null=True, blank=True)
   Pendiente = models.BooleanField(default=False)
   Imprimir = models.BooleanField(default=False)
-  Creado = models.BooleanField(default=False)
+  Creado = models.BooleanField(default=True)
   Finalizado = models.BooleanField(default=False)
   user = models.ForeignKey(User, on_delete=models.CASCADE)
   

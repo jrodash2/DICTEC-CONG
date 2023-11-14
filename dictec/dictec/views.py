@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from .forms import DictamenForm
+from .forms import DictameneditForm
 from .models import Dictamenfinal
 from django.utils import timezone
 
@@ -46,7 +47,7 @@ def dictamen(request):
     return render(request, 'dictamen.html', {'dictamens': dictamens})
 
 def dictamen_creado(request):
-    dictamens = Dictamenfinal.objects.filter(user=request.user, Datecompleted__isnull=True)
+    dictamens = Dictamenfinal.objects.filter(user=request.user, Datecompleted__isnull=True, Creado__isnull=False)
     return render(request, 'dictamen_creado.html', {'dictamens': dictamens})
 
 def dictamen_pendiente(request):
@@ -54,11 +55,11 @@ def dictamen_pendiente(request):
     return render(request, 'dictamen_pendiente.html', {'dictamens': dictamens})
 
 def dictamen_imprimir(request):
-    dictamens = Dictamenfinal.objects.filter(user=request.user, Datecompleted__isnull=True)
+    dictamens = Dictamenfinal.objects.filter(user=request.user, Datecompleted__isnull=True, Imprimir__isnull=False)
     return render(request, 'dictamen_imprimir.html', {'dictamens': dictamens})
 
 def dictamen_finalizado(request):
-    dictamens = Dictamenfinal.objects.filter(user=request.user, Datecompleted__isnull=True)
+    dictamens = Dictamenfinal.objects.filter(user=request.user, Datecompleted__isnull=True, Finalizado__isnull=False)
     return render(request, 'dictamen_finalizado.html', {'dictamens': dictamens})
 
 
@@ -92,12 +93,12 @@ def deleted_dic(request, dic_id):
 def editdictamen(request, dic_id):
     if request.method == 'GET':
         dictamen = get_object_or_404(Dictamenfinal, pk=dic_id)
-        form = DictamenForm(instance=dictamen)
+        form = DictameneditForm(instance=dictamen)
         return render(request, 'editdictamen.html', {'dictamen': dictamen, 'form': form})  
     else:
         try:
             dictamen = get_object_or_404(Dictamenfinal, pk=dic_id)
-            form = DictamenForm(request.POST, instance=dictamen)
+            form = DictameneditForm(request.POST, instance=dictamen)
             form.save()
             return redirect('dictamen')
         except: ValueError

@@ -233,11 +233,10 @@
                         <a href="{% url 'dicdetalle' dictamen.id %}">            
                             {% if dictamen.Pendiente %}
                             <strong class="text-warning">{{dictamen.Titulo}}</strong>
-                            {% else %}
-                            <h2 style="color: aqua;">{{dictamen.Titulo}}</h2>
+                            <h3>{{dictamen.Direccion}}</h3>
                             {% endif %}
                         </a>
-                        <h3>{{dictamen.Direccion}}</h3>
+                        
                                             
                         
                         </div>
