@@ -18,20 +18,30 @@ from django.contrib import admin
 from django.urls import path
 from dictec import views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
        path('signup/', views.signup, name='signup',),
        path('dictamen/', views.dictamen, name='dictamen',),
+       path('dictamenadmin/', views.dictamenadmin, name='dictamenadmin',),
+       path('dictamenadmin/<int:dic_id>/', views.dicdetalleadmin, name='dicdetalleadmin',),
        path('creado/', views.dictamen_creado, name='dictamen_creado',),
+       path('creadoadmin/', views.dictamen_creadoadmin, name='dictamen_creadoadmin',),
        path('pendiente/', views.dictamen_pendiente, name='dictamen_pendiente',),
+       path('pendienteadmin/', views.dictamen_pendienteadmin, name='dictamen_pendienteadmin',),
        path('imprimir/', views.dictamen_imprimir, name='dictamen_imprimir',),
+       path('imprimiradmin/', views.dictamen_imprimiradmin, name='dictamen_imprimiradmin',),
        path('finalizado/', views.dictamen_finalizado, name='dictamen_finalizado',),
+       path('finalizadoadmin/', views.dictamen_finalizadoadmin, name='dictamen_finalizadoadmin',),
        path('dictamen/create/', views.create_dictamen, name='crear_dictamen',),
        path('dictamen/<int:dic_id>/', views.dicdetalle, name='dicdetalle',),
+       path('imprimir/<int:dic_id>/', views.dicdetalleuser, name='dicdetalleuser',),
        path('dicdetalle/<int:dic_id>/complete', views.complete_dic, name='complete_dic',),
        path('dicdetalle/<int:dic_id>/deleted', views.deleted_dic, name='deleted_dic',),
        path('dicdetalle/<int:dic_id>/', views.editdictamen, name='editdictamen',),
+       path('dicdetalleuser/<int:dic_id>/', views.editdictamenuser, name='editdictamenuser',),
+       path('dicdetalleadmin/<int:dic_id>/', views.editdictamenadmin, name='editdictamenadmin',),
        path('logout/', views.signout, name='logout',),
        path('signin/', views.signin, name='signin',),
        path('dashboard/', views.dashboard, name='dashboard',)

@@ -1,12 +1,18 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group, GroupManager
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from .forms import DictamenForm
 from .forms import DictameneditForm
+from .forms import DictameneditadminForm
+from .forms import RespaldoForm
 from .models import Dictamenfinal
 from django.utils import timezone
+from django.urls import reverse
+from django.contrib.auth.hashers import make_password
+from django. contrib import messages
+
 
 # Create your views here.
 
@@ -46,22 +52,41 @@ def dictamen(request):
     dictamens = Dictamenfinal.objects.filter(user=request.user, Datecompleted__isnull=True)
     return render(request, 'dictamen.html', {'dictamens': dictamens})
 
+def dictamenadmin(request):
+    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True)
+    return render(request, 'dictamenadmin.html', {'dictamens': dictamens})
+
 def dictamen_creado(request):
     dictamens = Dictamenfinal.objects.filter(user=request.user, Datecompleted__isnull=True, Creado__isnull=False)
     return render(request, 'dictamen_creado.html', {'dictamens': dictamens})
+
+def dictamen_creadoadmin(request):
+    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True, Creado__isnull=False)
+    return render(request, 'dictamen_creadoadmin.html', {'dictamens': dictamens})
 
 def dictamen_pendiente(request):
     dictamens = Dictamenfinal.objects.filter(user=request.user, Datecompleted__isnull=True)
     return render(request, 'dictamen_pendiente.html', {'dictamens': dictamens})
 
+def dictamen_pendienteadmin(request):
+    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True)
+    return render(request, 'dictamen_pendienteadmin.html', {'dictamens': dictamens})
+
 def dictamen_imprimir(request):
     dictamens = Dictamenfinal.objects.filter(user=request.user, Datecompleted__isnull=True, Imprimir__isnull=False)
     return render(request, 'dictamen_imprimir.html', {'dictamens': dictamens})
+
+def dictamen_imprimiradmin(request):
+    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True, Imprimir__isnull=False)
+    return render(request, 'dictamen_imprimiradmin.html', {'dictamens': dictamens})
 
 def dictamen_finalizado(request):
     dictamens = Dictamenfinal.objects.filter(user=request.user, Datecompleted__isnull=True, Finalizado__isnull=False)
     return render(request, 'dictamen_finalizado.html', {'dictamens': dictamens})
 
+def dictamen_finalizadoadmin(request):
+    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True, Finalizado__isnull=False)
+    return render(request, 'dictamen_finalizadoadmin.html', {'dictamens': dictamens})
 
 
 
@@ -76,6 +101,28 @@ def dicdetalle(request, dic_id):
         form = DictamenForm(request.POST, instance=dictamen)
         form.save()
         return redirect('dictamen')
+
+def dicdetalleuser(request, dic_id):
+    if request.method == 'GET':
+        dictamen = get_object_or_404(Dictamenfinal, pk=dic_id)
+        form = DictamenForm(instance=dictamen)
+        return render(request, 'dicdetalleuser.html', {'dictamen': dictamen, 'form': form})   
+    else:
+        dictamen = get_object_or_404(Dictamenfinal, pk=dic_id)
+        form = DictamenForm(request.POST, instance=dictamen)
+        form.save()
+        return redirect('dictamen')
+
+def dicdetalleadmin(request, dic_id):
+    if request.method == 'GET':
+        dictamen = get_object_or_404(Dictamenfinal, pk=dic_id)
+        form = DictamenForm(instance=dictamen)
+        return render(request, 'dicdetalleadmin.html', {'dictamen': dictamen, 'form': form})   
+    else:
+        dictamen = get_object_or_404(Dictamenfinal, pk=dic_id)
+        form = DictamenForm(request.POST, instance=dictamen)
+        form.save()
+        return redirect('dictamenadmin')
     
 def complete_dic(request, dic_id):
      dictamen = get_object_or_404(Dictamenfinal, pk=dic_id)
@@ -104,6 +151,34 @@ def editdictamen(request, dic_id):
         except: ValueError
         return render(request, 'editdictamen.html', {'dictamen': dictamen, 'form': form, 'error': "Error actualiando Dictamen"})
     
+def editdictamenuser(request, dic_id):
+    if request.method == 'GET':
+        dictamen = get_object_or_404(Dictamenfinal, pk=dic_id)
+        form = RespaldoForm(instance=dictamen)
+        return render(request, 'editdictamenuser.html', {'dictamen': dictamen, 'form': form})  
+    else:
+        try:
+            dictamen = get_object_or_404(Dictamenfinal, pk=dic_id)
+            form = RespaldoForm(request.POST, instance=dictamen)
+            form.save()
+            return redirect('dictamen')
+        except: ValueError
+        return render(request, 'editdictamenuser.html', {'dictamen': dictamen, 'form': form, 'error': "Error actualiando Dictamen"})
+    
+def editdictamenadmin(request, dic_id):
+    if request.method == 'GET':
+        dictamen = get_object_or_404(Dictamenfinal, pk=dic_id)
+        form = DictameneditadminForm(instance=dictamen)
+        return render(request, 'editdictamenadmin.html', {'dictamen': dictamen, 'form': form})  
+    else:
+        try:
+            dictamen = get_object_or_404(Dictamenfinal, pk=dic_id)
+            form = DictameneditadminForm(request.POST, instance=dictamen)
+            form.save()
+            return redirect('dictamenadmin')
+        except: ValueError
+        return render(request, 'editdictamenadmin.html', {'dictamen': dictamen, 'form': form, 'error': "Error actualiando Dictamen"})
+    
 
 
 def dashboard(request):
@@ -129,9 +204,18 @@ def signin(request):
             'form': AuthenticationForm,
             'error': 'Usuario o Password es Incorecto'
         })
+
         else:
             login(request, user)
-            return redirect('dashboard')
+            data = user.groups.all()
+            for g in data:
+                print(g.name)
+                if g.name=='Administrador':
+                   return redirect('dictamenadmin')
+                else:
+                    return redirect('dashboard')
+        
+
 
 
 

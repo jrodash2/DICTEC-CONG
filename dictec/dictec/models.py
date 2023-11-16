@@ -13,6 +13,7 @@ class Dictamen(models.Model):
   Modelo = models.CharField(max_length=80)
   Num_Serie = models.CharField(max_length=80)
   Caracteristicas = models.CharField(max_length=200)
+  Comentario = models.CharField(max_length=300)
   Analisis = models.TextField(max_length=1000)
   Dictamen_Final = models.TextField(max_length=1000)
   Creacion = models.DateTimeField(auto_now_add=True)
@@ -35,6 +36,7 @@ class Dictamenfinal(models.Model):
   Modelo = models.CharField(max_length=80)
   Num_Serie = models.CharField(max_length=80)
   Caracteristicas = models.CharField(max_length=200)
+  Comentario = models.CharField(max_length=300)
   Problema = models.TextField(max_length=1000)  
   Analisis = models.TextField(max_length=1000)
   Proceso_Realizado = models.TextField(max_length=1000)
@@ -44,6 +46,7 @@ class Dictamenfinal(models.Model):
   Pendiente = models.BooleanField(default=False)
   Imprimir = models.BooleanField(default=False)
   Creado = models.BooleanField(default=True)
+  imagen = models.ImageField(upload_to='static/img/%Y/%m/%d', null=True, blank=True)
   Finalizado = models.BooleanField(default=False)
   user = models.ForeignKey(User, on_delete=models.CASCADE)
   

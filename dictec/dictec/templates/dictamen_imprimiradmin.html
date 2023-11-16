@@ -51,7 +51,7 @@
                             <div class="perfect-scrollbar relative -mr-3.5 h-full grow pr-3.5">
                                 <div class="space-y-1">
                                     <button
-                                        type="button" onclick="location.href='/dictamen/'"
+                                        type="button" onclick="location.href='/dictamenadmin/'"
                                         class="flex h-10 w-full items-center justify-between rounded-md p-2 font-medium hover:bg-white-dark/10 hover:text-primary dark:hover:bg-[#181F32] dark:hover:text-primary"
                                      
                                     >
@@ -94,7 +94,7 @@
 
                                     <button
                                     type="button"
-                                    class=" category_item flex h-10 w-full items-center rounded-md p-1 font-medium text-primary duration-300 hover:bg-white-dark/10 ltr:hover:pl-3 rtl:hover:pr-3 dark:hover:bg-[#181F32]" onclick="location.href='/creado/'"
+                                    class=" category_item flex h-10 w-full items-center rounded-md p-1 font-medium text-primary duration-300 hover:bg-white-dark/10 ltr:hover:pl-3 rtl:hover:pr-3 dark:hover:bg-[#181F32]" onclick="location.href='/creadoadmin/'"
                                  
                                 >
                                 <svg
@@ -118,7 +118,7 @@
                                     
                                     <button
                                     type="button" 
-                                    class=" category_item flex h-10 w-full items-center rounded-md p-1 font-medium text-warning duration-300 hover:bg-white-dark/10 ltr:hover:pl-3 rtl:hover:pr-3 dark:hover:bg-[#181F32]" onclick="location.href='/pendiente/'"
+                                    class=" category_item flex h-10 w-full items-center rounded-md p-1 font-medium text-warning duration-300 hover:bg-white-dark/10 ltr:hover:pl-3 rtl:hover:pr-3 dark:hover:bg-[#181F32]" onclick="location.href='/pendienteadmin/'"
                                       
                                     >
                                         <svg
@@ -139,7 +139,7 @@
                                     </button>
 
                                     <button
-                                    type="button" onclick="location.href='/imprimir/'"
+                                    type="button" onclick="location.href='/imprimiradmin/'"
                                     class=" category_item flex h-10 w-full items-center rounded-md p-1 font-medium text-info duration-300 hover:bg-white-dark/10 ltr:hover:pl-3 rtl:hover:pr-3 dark:hover:bg-[#181F32]"
                                       
                                     >
@@ -157,11 +157,11 @@
                                                 stroke-width="1.5"
                                             ></path>
                                         </svg>
-                                        <div class="ltr:ml-3 rtl:mr-3">En Proceso</div>
+                                        <div class="ltr:ml-3 rtl:mr-3">Imprimir</div>
                                     </button>
 
                                     <button
-                                    type="button" onclick="location.href='/finalizado/'"
+                                    type="button" onclick="location.href='/finalizadoadmin/'"
                                     class=" category_item flex h-10 w-full items-center rounded-md p-1 font-medium text-danger duration-300 hover:bg-white-dark/10 ltr:hover:pl-3 rtl:hover:pr-3 dark:hover:bg-[#181F32]"
                                       
                                     >
@@ -228,13 +228,15 @@
                        <div class="create-route" href="{% url 'dicdetalle' dictamen.id %}">
                        <div class="product-item" category="laptops">
                         
-                                     
+                                               
+                                  
                         <a href="{% url 'dicdetalle' dictamen.id %}">            
-                           <ul>
-                            <li>{{dictamen.Titulo}}</li>
-                           </ul>
+                            {% if dictamen.Imprimir %}
+                            <strong class="text-info">{{dictamen.Titulo}}</strong>
+                            <h3>{{dictamen.Direccion}}</h3>
+                            {% endif %}
                         </a>
-                        <h3>{{dictamen.Direccion}}</h3>
+                        
                                             
                         
                         </div>

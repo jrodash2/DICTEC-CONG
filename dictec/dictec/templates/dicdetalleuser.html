@@ -5,8 +5,12 @@
 
 <div class="animate__animated p-6" :class="[$store.app.animation]">
     <!-- start main content section -->
+    
     <div x-data="invoicePreview">
+
+       
         <div class="mb-6 flex flex-wrap items-center justify-center gap-4 lg:justify-end">
+            
           <a href="/dictamen/">
             
         <button type="button" class="btn btn-info gap-2" >
@@ -14,17 +18,11 @@
             Dictamenes
         </button></a>  
 
-            <!-- <button type="button" class="btn btn-primary gap-2" @click="print">
+            <button type="button" class="btn btn-primary gap-2" @click="print">
              
                 Imprimir
-            </button> -->
-            <!-- <form action="{% url 'complete_dic' dictamen.id %}" method="POST">
-                {% csrf_token %}
-            <button class="btn btn-info">
-              
-                Enviar al Archivos
-            </button> -->
-        </form>
+            </button>
+            
 
         <!-- <form action="{% url 'complete_dic' dictamen.id %}" method="POST">
             {% csrf_token %}
@@ -37,7 +35,7 @@
           
 
 
-            <a href="{% url 'editdictamen' dictamen.id %}" class="btn btn-warning gap-2">
+            <a href="{% url 'editdictamenuser' dictamen.id %}" class="btn btn-warning gap-2">
                
                 Editar
             </a>
@@ -45,7 +43,7 @@
         <div class="panel">
             <div class="flex flex-wrap justify-between gap-4 px-4">
                 <div class="text-2xl font-semibold uppercase">{{dictamen.Titulo}} </div>
-                
+               
               
                    
             </div>
@@ -106,10 +104,21 @@
                     <b class="font-semibold text-black dark:text-white">{{dictamen.Dictamen_Final}}</b></div>
                   
                 </div>
+                
             </div>
           
            
         </div>
+       <div>
+        <br>
+        <form  action="{% url 'complete_dic' dictamen.id %}" method="POST">
+            {% csrf_token %}
+        <button class="btn btn-info">
+          
+            Finalizar Dictamen
+        </button>
+    </form>
+       </div> 
     </div>
     <!-- end main content section -->
 
