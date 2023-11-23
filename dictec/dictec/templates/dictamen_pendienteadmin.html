@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'baseadmin.html' %}
 {% load static %}
 {% block content %}
 
@@ -234,6 +234,7 @@
                             {% if dictamen.Pendiente %}
                             <strong class="text-warning">{{dictamen.Titulo}}</strong>
                             <h3>{{dictamen.Direccion}}</h3>
+                            <h3>{{dictamen.Revision}}</h3>
                             {% endif %}
                         </a>
                         

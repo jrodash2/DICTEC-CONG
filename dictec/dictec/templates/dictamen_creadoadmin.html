@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'baseadmin.html' %}
 {% load static %}
 {% block content %}
 
@@ -225,11 +225,11 @@
                         <section class="products-list">
 
                         
-                       <div class="create-route" href="{% url 'dicdetalle' dictamen.id %}">
+                       <div class="create-route" href="{% url 'dicdetalleadmin' dictamen.id %}">
                        <div class="product-item" category="laptops">
                         
                                                
-                                    <a href="{% url 'dicdetalle' dictamen.id %}">            
+                                    <a href="{% url 'dicdetalleadmin' dictamen.id %}">            
                                     {% if dictamen.Creado %}
                                     <strong class="text-primary">{{dictamen.Titulo}}</strong>
                                     <h3>{{dictamen.Direccion}}</h3>

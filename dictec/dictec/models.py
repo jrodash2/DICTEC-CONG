@@ -34,6 +34,7 @@ class Dictamenfinal(models.Model):
   Tipo_Equipo = models.CharField(max_length=80) 
   Marca = models.CharField(max_length=80)
   Modelo = models.CharField(max_length=80)
+  Revision = models.CharField(max_length=80)
   Num_Serie = models.CharField(max_length=80)
   Caracteristicas = models.CharField(max_length=200)
   Comentario = models.CharField(max_length=300)

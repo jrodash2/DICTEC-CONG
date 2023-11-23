@@ -6,6 +6,7 @@ from django.db import IntegrityError
 from .forms import DictamenForm
 from .forms import DictameneditForm
 from .forms import DictameneditadminForm
+from .forms import RevisionForm
 from .forms import RespaldoForm
 from .models import Dictamenfinal
 from django.utils import timezone
@@ -140,12 +141,12 @@ def deleted_dic(request, dic_id):
 def editdictamen(request, dic_id):
     if request.method == 'GET':
         dictamen = get_object_or_404(Dictamenfinal, pk=dic_id)
-        form = DictameneditForm(instance=dictamen)
+        form = RevisionForm(instance=dictamen)
         return render(request, 'editdictamen.html', {'dictamen': dictamen, 'form': form})  
     else:
         try:
             dictamen = get_object_or_404(Dictamenfinal, pk=dic_id)
-            form = DictameneditForm(request.POST, instance=dictamen)
+            form = RevisionForm(request.POST, instance=dictamen)
             form.save()
             return redirect('dictamen')
         except: ValueError
