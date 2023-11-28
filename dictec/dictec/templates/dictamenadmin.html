@@ -228,19 +228,25 @@
                        <div class="create-route" href="{% url 'dicdetalleadmin' dictamen.id %}">
                        <div class="product-item" category="laptops">
                         
-                                     
-                        <a href="{% url 'dicdetalleadmin' dictamen.id %}">            
-                           <ul>
-                            <li>{{dictamen.Titulo}}</li>
-                           </ul>
-                        </a>
-                        <h3>{{dictamen.Direccion}}</h3>
+
                                             
                         
                         </div>
                        
                         
                         </div>
+
+                            <!-- START Card component -->
+                            <article class="container dark:bg-[#0e1726] bg-white shadow-2xl rounded-2xl p-5 ">
+                                <h1 class="text-gray-800 font-extrabold font-['Arial'] ">{{dictamen.Titulo}}</h1>
+                                <h6 class="text-sm text-gray-500 mb-5">{{dictamen.Direccion}}</h6>
+                                <p class="font-light text-gray-500 hover:font-bold"><h3> Creado Por: {{dictamen.user}}</h3></p><br>
+                                <a href="{% url 'dicdetalleadmin' dictamen.id %}" class="rounded-lg py-2 px-4 text-center text-white bg-yellow-400 hover:bg-yellow-500">Ver Dictamen</a>
+                                </article>
+                                                
+                                                            
+                                                
+
             </section>
                 {% endfor %}
                     </div>
