@@ -185,20 +185,8 @@
                             </div>
                         </div>
                         <div class="absolute bottom-0 w-full p-4 ltr:left-0 rtl:right-0">
-                            <button type="button" class="btn btn-primary flex" onclick="location.href='/dictamen/create/'">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="24px"
-                                    height="24px"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="1.5"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="h-5 w-5 ltr:mr-3 rtl:ml-3"
-                                    
-                                >
+                            <button type="button" class="rounded-lg py-2 px-4 text-center text-white bg-yellow-400 hover:bg-yellow-500" onclick="location.href='/dictamen/create/'" >
+                              
                                     <line x1="12" y1="5" x2="12" y2="19"></line>
                                     <line x1="5" y1="12" x2="19" y2="12"></line>
                                     
@@ -208,7 +196,7 @@
                         </div>
                     </div>
 
-                    <div class="panel h-full flex-1 overflow-auto">
+                    <div class="panel h-full flex-1 overflow-auto ">
                         <div class="pb-5">
                             <button type="button" class="hover:text-primary xl:hidden" @click="isShowNoteMenu = !isShowNoteMenu">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6">
@@ -219,31 +207,38 @@
                             </button>
                         </div>
                         
-                        
-                        <div id="container" class="items-center" >
+<div id="container" class="items-center" >
                         {% for dictamen in dictamens %}
                         <section class="products-list">
 
                         
-                       <div class="create-route" href="{% url 'dicdetalle' dictamen.id %}">
+                       <div class="create-route grid" href="{% url 'dicdetalle' dictamen.id %}">
                        <div class="product-item" category="laptops">
                         
-                                     
-                        <a href="{% url 'dicdetalle' dictamen.id %}">            
-                           <ul>
-                            <li>{{dictamen.Titulo}}</li>
-                           </ul>
-                        </a>
-                        <h3>{{dictamen.Direccion}}</h3>
-                                            
+            
                         
                         </div>
                        
                         
                         </div>
+                       
+                            <!-- START Card component -->
+<article class="container dark:bg-[#0e1726] bg-white shadow-2xl rounded-2xl p-5 ">
+<h1 class="text-gray-800 font-extrabold font-['Arial'] ">{{dictamen.Titulo}}</h1>
+<h6 class="text-sm text-gray-500 mb-5">{{dictamen.Direccion}}</h6>
+<p class="font-light text-gray-500 hover:font-bold"><h3> Creado Por: {{dictamen.user}}</h3></p><br>
+<a href="{% url 'dicdetalle' dictamen.id %}" class="rounded-lg py-2 px-4 text-center text-white bg-yellow-400 hover:bg-yellow-500">Ver Dictamen</a>
+</article>
+                
+                            
+                           
+                   
+
+
+                        
             </section>
                 {% endfor %}
-                    </div>
+</div>
                
                 </div>
                 </div>
