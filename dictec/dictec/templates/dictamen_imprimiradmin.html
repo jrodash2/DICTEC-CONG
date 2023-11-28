@@ -157,7 +157,7 @@
                                                 stroke-width="1.5"
                                             ></path>
                                         </svg>
-                                        <div class="ltr:ml-3 rtl:mr-3">Imprimir</div>
+                                        <div class="ltr:ml-3 rtl:mr-3">En Proceso</div>
                                     </button>
 
                                     <button
@@ -230,19 +230,23 @@
                         
                                                
                                   
-                        <a href="{% url 'dicdetalle' dictamen.id %}">            
-                            {% if dictamen.Imprimir %}
-                            <strong class="text-info">{{dictamen.Titulo}}</strong>
-                            <h3>{{dictamen.Direccion}}</h3>
-                            {% endif %}
-                        </a>
-                        
-                                            
+                
                         
                         </div>
                        
                         
                         </div>
+                        <article class="container dark:bg-[#0e1726] bg-white shadow-2xl rounded-2xl p-5 ">
+                            {% if dictamen.Imprimir %}
+                            <h1 class="font-extrabold font-['Arial'] text-info ">{{dictamen.Titulo}}</h1>
+                            <h3 class="text-sm text-gray-500">{{dictamen.Oficina}}</h3>
+                            <h6 class="text-sm text-gray-500">{{dictamen.Direccion}}</h6>
+                            <p class="font-light text-gray-500 hover:font-bold"><h3> Creado por:  {{dictamen.user}}</h3></p><br>
+                           
+                            <a href="{% url 'dicdetalleadmin' dictamen.id %}" class="rounded-lg py-2 px-4 text-center text-white bg-yellow-400 hover:bg-yellow-500">Ver Dictamen</a>
+                            {% endif %}
+                            </article>
+            </section>
             </section>
                 {% endfor %}
                     </div>

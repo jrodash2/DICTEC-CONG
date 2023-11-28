@@ -157,7 +157,7 @@
                                                 stroke-width="1.5"
                                             ></path>
                                         </svg>
-                                        <div class="ltr:ml-3 rtl:mr-3">Imprimir</div>
+                                        <div class="ltr:ml-3 rtl:mr-3">En Proceso</div>
                                     </button>
 
                                     <button
@@ -185,20 +185,8 @@
                             </div>
                         </div>
                         <div class="absolute bottom-0 w-full p-4 ltr:left-0 rtl:right-0">
-                            <button type="button" class="btn btn-primary flex" onclick="location.href='/dictamen/create/'">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="24px"
-                                    height="24px"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="1.5"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="h-5 w-5 ltr:mr-3 rtl:ml-3"
-                                    
-                                >
+                            <button type="button" class="rounded-lg py-2 px-4 text-center text-white bg-yellow-400 hover:bg-yellow-500" onclick="location.href='/dictamen/create/'" >
+                              
                                     <line x1="12" y1="5" x2="12" y2="19"></line>
                                     <line x1="5" y1="12" x2="19" y2="12"></line>
                                     
@@ -239,7 +227,8 @@
                             <!-- START Card component -->
                             <article class="container dark:bg-[#0e1726] bg-white shadow-2xl rounded-2xl p-5 ">
                                 <h1 class="text-gray-800 font-extrabold font-['Arial'] ">{{dictamen.Titulo}}</h1>
-                                <h6 class="text-sm text-gray-500 mb-5">{{dictamen.Direccion}}</h6>
+                                <h3 class="text-sm text-gray-500">{{dictamen.Oficina}}</h3>
+                                <h6 class="text-sm text-gray-500">{{dictamen.Direccion}}</h6>
                                 <p class="font-light text-gray-500 hover:font-bold"><h3> Creado Por: {{dictamen.user}}</h3></p><br>
                                 <a href="{% url 'dicdetalleadmin' dictamen.id %}" class="rounded-lg py-2 px-4 text-center text-white bg-yellow-400 hover:bg-yellow-500">Ver Dictamen</a>
                                 </article>
