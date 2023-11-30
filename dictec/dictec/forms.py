@@ -14,7 +14,12 @@ class DictameneditForm(ModelForm):
 class DictameneditadminForm(ModelForm):
     class Meta:
         model = Dictamenfinal 
-        fields = [ 'Comentario', 'Creado', 'Imprimir', 'Pendiente']
+        fields = [ 'Comentario', 'Creado', 'Imprimir','Revision']
+
+class DictameneditjefeForm(ModelForm):
+    class Meta:
+        model = Dictamenfinal 
+        fields = [ 'Pendiente']
 
 class RespaldoForm(ModelForm):
     class Meta:

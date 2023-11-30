@@ -6,6 +6,7 @@ from django.db import IntegrityError
 from .forms import DictamenForm
 from .forms import DictameneditForm
 from .forms import DictameneditadminForm
+from .forms import DictameneditjefeForm
 from .forms import RevisionForm
 from .forms import RespaldoForm
 from .models import Dictamenfinal

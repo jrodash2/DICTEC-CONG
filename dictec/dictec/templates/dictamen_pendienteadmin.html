@@ -185,26 +185,14 @@
                             </div>
                         </div>
                         <div class="absolute bottom-0 w-full p-4 ltr:left-0 rtl:right-0">
-                            <button type="button" class="btn btn-primary flex" onclick="location.href='/dictamen/create/'">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="24px"
-                                    height="24px"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="1.5"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="h-5 w-5 ltr:mr-3 rtl:ml-3"
-                                    
-                                >
-                                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    
-                                </svg>
-                                 Crear Dictamen
-                            </button>
+                            <button type="button" class="rounded-lg py-2 px-4 text-center text-white bg-yellow-400 hover:bg-yellow-500" onclick="location.href='/dictamen/create/'" >
+                              
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                
+                            </svg>
+                             Crear Dictamen
+                        </button>
                         </div>
                     </div>
 
@@ -239,14 +227,17 @@
                                                                                                     <!-- START Card component -->
 <article class="container dark:bg-[#0e1726] bg-white shadow-2xl rounded-2xl p-5 ">
     {% if dictamen.Pendiente %}
-    <h1 class="font-extrabold font-['Arial'] text-warning ">{{dictamen.Titulo}}</h1>
+    <h1 class="font-extrabold font-['Arial'] text-warning ">{{dictamen.Titulo}}</h1> 
     <h3 class="text-sm text-gray-500">{{dictamen.Oficina}}</h3>
     <h6 class="text-sm text-gray-500">{{dictamen.Direccion}}</h6>
-    <p class="font-light text-gray-500 hover:font-bold"><h3> Creado por:  {{dictamen.user}}</h3></p><br>
    
+    <p class="font-light text-gray-500 hover:font-bold"><h3> Creado por:  {{dictamen.user}}</h3></p>
+    <h1 class="font-extrabold font-['Arial'] text-green-600 ">{{dictamen.Revision}}</h1> <br>
     <a href="{% url 'dicdetalleadmin' dictamen.id %}" class="rounded-lg py-2 px-4 text-center text-white bg-yellow-400 hover:bg-yellow-500">Ver Dictamen</a>
     {% endif %}
+    
     </article>
+    
             </section>
                 {% endfor %}
                     </div>
