@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'baseadmin.html' %}
 {% load static %}
 
 {% block content %}
@@ -7,14 +7,12 @@
     <!-- start main content section -->
     <div x-data="invoicePreview">
         <div class="mb-6 flex flex-wrap items-center justify-center gap-4 lg:justify-end">
-          <a href="/dictamen/">
+          <a href="/dictamenjefe/">
             
         <button type="button" class="rounded-lg py-2 px-4 text-center text-white bg-yellow-400 hover:bg-yellow-500" >
               
             Dictamenes
         </button></a>  
-
-
 
             <!-- <button type="button" class="btn btn-primary gap-2" @click="print">
              
@@ -39,7 +37,7 @@
           
 
 
-            <a href="{% url 'editdictamen' dictamen.id %}" class="btn btn-warning gap-2">
+            <a href="{% url 'editdictamenjefe' dictamen.id %}" class="btn btn-warning gap-2">
                
                 Editar
             </a>
@@ -61,19 +59,17 @@
                     <div>Oficina:  <b>{{dictamen.Oficina}}</b></div>
                     <div>Dirección:  <b>{{dictamen.Direccion}}</b></div>
                     <div>Fecha de Creación:  <b>{{dictamen.Creacion}}</b></div>
-                   
                     
                 </div>
                 <div style="text-align: right;">Dictamen Creado Por El Usuario:</div>
                 <p class="font-semibold text-black dark:text-white" style="text-align: right;"><b>{{dictamen.user}}</p>
+                </div>
+                    <div>Comentario de la Dirección:</div>
+                    <p class="font-semibold text-blue-600 dark:text-white " ><b>{{dictamen.Comentario}}</p>
 
-            <div>Comentario de la Dirección:</div>
-            <p class="font-semibold text-blue-600 dark:text-white " ><b>{{dictamen.Comentario}}</p>
-
-        <div>Comentario del Jefe:</div>
-        <p class="font-semibold text-orange-500 dark:text-white"><b>{{dictamen.Comentariojefe}}</p>
-
-
+                <div>Comentario del Jefe:</div>
+                <p class="font-semibold text-orange-500 dark:text-white"><b>{{dictamen.Comentariojefe}}</p>
+            
 
             <hr class="my-6 border-[#e0e6ed] dark:border-[#1b2e4b]" />
             <div class="flex flex-col flex-wrap justify-between gap-6 lg:flex-row">
@@ -83,7 +79,6 @@
                         <div class="font-semibold text-black dark:text-white">{{dictamen.Tipo_Equipo}}</div>
                         <div>Marca:</div>
                         <div class="font-semibold text-black dark:text-white">{{dictamen.Marca}}</div>
-                        
                         <div>Modelo:</div>
                         <div class="font-semibold text-black dark:text-white">{{dictamen.Modelo}}</div>
                         <div>Numero de Serie:</div>

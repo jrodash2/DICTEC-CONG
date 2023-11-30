@@ -51,7 +51,7 @@
                             <div class="perfect-scrollbar relative -mr-3.5 h-full grow pr-3.5">
                                 <div class="space-y-1">
                                     <button
-                                        type="button" onclick="location.href='/dictamenadmin/'"
+                                        type="button" onclick="location.href='/dictamenjefe/'"
                                         class="flex h-10 w-full items-center justify-between rounded-md p-2 font-medium hover:bg-white-dark/10 hover:text-primary dark:hover:bg-[#181F32] dark:hover:text-primary"
                                      
                                     >
@@ -94,7 +94,7 @@
 
                                     <button
                                     type="button"
-                                    class=" category_item flex h-10 w-full items-center rounded-md p-1 font-medium text-primary duration-300 hover:bg-white-dark/10 ltr:hover:pl-3 rtl:hover:pr-3 dark:hover:bg-[#181F32]" onclick="location.href='/creadoadmin/'"
+                                    class=" category_item flex h-10 w-full items-center rounded-md p-1 font-medium text-primary duration-300 hover:bg-white-dark/10 ltr:hover:pl-3 rtl:hover:pr-3 dark:hover:bg-[#181F32]" onclick="location.href='/creadojefe/'"
                                  
                                 >
                                 <svg
@@ -118,7 +118,7 @@
                                     
                                     <button
                                     type="button" 
-                                    class=" category_item flex h-10 w-full items-center rounded-md p-1 font-medium text-warning duration-300 hover:bg-white-dark/10 ltr:hover:pl-3 rtl:hover:pr-3 dark:hover:bg-[#181F32]" onclick="location.href='/pendienteadmin/'"
+                                    class=" category_item flex h-10 w-full items-center rounded-md p-1 font-medium text-warning duration-300 hover:bg-white-dark/10 ltr:hover:pl-3 rtl:hover:pr-3 dark:hover:bg-[#181F32]" onclick="location.href='/pendientejefe/'"
                                       
                                     >
                                         <svg
@@ -139,7 +139,7 @@
                                     </button>
 
                                     <button
-                                    type="button" onclick="location.href='/imprimiradmin/'"
+                                    type="button" onclick="location.href='/imprimirjefe/'"
                                     class=" category_item flex h-10 w-full items-center rounded-md p-1 font-medium text-info duration-300 hover:bg-white-dark/10 ltr:hover:pl-3 rtl:hover:pr-3 dark:hover:bg-[#181F32]"
                                       
                                     >
@@ -161,7 +161,7 @@
                                     </button>
 
                                     <button
-                                    type="button" onclick="location.href='/finalizadoadmin/'"
+                                    type="button" onclick="location.href='/finalizadojefe/'"
                                     class=" category_item flex h-10 w-full items-center rounded-md p-1 font-medium text-danger duration-300 hover:bg-white-dark/10 ltr:hover:pl-3 rtl:hover:pr-3 dark:hover:bg-[#181F32]"
                                       
                                     >
@@ -187,12 +187,12 @@
                         <div class="absolute bottom-0 w-full p-4 ltr:left-0 rtl:right-0">
                             <button type="button" class="rounded-lg py-2 px-4 text-center text-white bg-yellow-400 hover:bg-yellow-500" onclick="location.href='/dictamen/create/'" >
                               
-                                <line x1="12" y1="5" x2="12" y2="19"></line>
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                
-                            </svg>
-                             Crear Dictamen
-                        </button>
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    
+                                </svg>
+                                 Crear Dictamen
+                            </button>
                         </div>
                     </div>
 
@@ -213,10 +213,9 @@
                         <section class="products-list">
 
                         
-                       <div class="create-route" href="{% url 'dicdetalleadmin' dictamen.id %}">
+                       <div class="create-route" href="{% url 'dicdetallejefe' dictamen.id %}">
                        <div class="product-item" category="laptops">
                         
-                                               
 
                                             
                         
@@ -224,21 +223,19 @@
                        
                         
                         </div>
-                                                                                                    <!-- START Card component -->
-<article class="container dark:bg-[#0e1726] bg-white shadow-2xl rounded-2xl p-5 ">
-    {% if dictamen.Pendiente %}
-    <h1 class="font-extrabold font-['Arial'] text-warning ">{{dictamen.Titulo}}</h1> 
-    <h3 class="text-sm text-gray-500">{{dictamen.Oficina}}</h3>
-    <h6 class="text-sm text-gray-500">{{dictamen.Direccion}}</h6>
-   
-    <p class="font-light text-gray-500 hover:font-bold"><h3> Creado por:  {{dictamen.user}}</h3></p>
-    <h1 class="font-extrabold font-['Arial'] text-green-600 ">Técnico Dice: {{dictamen.Revision}}</h1> <br>
-    <h1 class="font-extrabold font-['Arial'] text-green-600 ">Estado: {{dictamen.Revisionjefe}}</h1> <br>
-    <a href="{% url 'dicdetalleadmin' dictamen.id %}" class="rounded-lg py-2 px-4 text-center text-white bg-yellow-400 hover:bg-yellow-500">Ver Dictamen</a>
-    {% endif %}
-    
-    </article>
-    
+
+                            <!-- START Card component -->
+                            <article class="container dark:bg-[#0e1726] bg-white shadow-2xl rounded-2xl p-5 ">
+                                <h1 class="text-gray-800 font-extrabold font-['Arial'] ">{{dictamen.Titulo}}</h1>
+                                <h3 class="text-sm text-gray-500">{{dictamen.Oficina}}</h3>
+                                <h6 class="text-sm text-gray-500">{{dictamen.Direccion}}</h6>
+                                <p class="font-light text-gray-500 hover:font-bold"><h3> Creado Por: {{dictamen.user}}</h3></p><br>
+                                <a href="{% url 'dicdetallejefe' dictamen.id %}" class="rounded-lg py-2 px-4 text-center text-white bg-yellow-400 hover:bg-yellow-500">Ver Dictamen</a>
+                                </article>
+                                                
+                                                            
+                                                
+
             </section>
                 {% endfor %}
                     </div>
