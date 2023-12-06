@@ -16,7 +16,6 @@ from django.urls import reverse
 from django.contrib.auth.hashers import make_password
 from django. contrib import messages
 
-
 # Create your views here.
 
 
@@ -64,27 +63,28 @@ def dictamenjefe(request):
     return render(request, 'dictamenjefe.html', {'dictamens': dictamens})
 
 def dictamen_creado(request):
-    dictamens = Dictamenfinal.objects.filter(user=request.user, Datecompleted__isnull=True, Creado__isnull=False)
+    dictamens = Dictamenfinal.objects.filter(user=request.user, Datecompleted__isnull=True,Creado__isnull=False).exclude(Pendiente=True)
+   
     return render(request, 'dictamen_creado.html', {'dictamens': dictamens})
 
 def dictamen_creadoadmin(request):
-    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True, Creado__isnull=False)
+    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True, Creado__isnull=False).exclude(Pendiente=True)
     return render(request, 'dictamen_creadoadmin.html', {'dictamens': dictamens})
 
 def dictamen_creadojefe(request):
-    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True, Creado__isnull=False)
+    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True, Creado__isnull=False).exclude(Pendiente=True)
     return render(request, 'dictamen_creadojefe.html', {'dictamens': dictamens})
 
 def dictamen_pendiente(request):
-    dictamens = Dictamenfinal.objects.filter(user=request.user, Datecompleted__isnull=True)
+    dictamens = Dictamenfinal.objects.filter(user=request.user, Datecompleted__isnull=True).exclude(Imprimir=True)
     return render(request, 'dictamen_pendiente.html', {'dictamens': dictamens})
 
 def dictamen_pendienteadmin(request):
-    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True)
+    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True).exclude(Imprimir=True)
     return render(request, 'dictamen_pendienteadmin.html', {'dictamens': dictamens})
 
 def dictamen_pendientejefe(request):
-    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True)
+    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True).exclude(Imprimir=True)
     return render(request, 'dictamen_pendientejefe.html', {'dictamens': dictamens})
 
 def dictamen_imprimir(request):
@@ -138,18 +138,32 @@ def dicdetalleadmin(request, dic_id):
     if request.method == 'GET':
         dictamen = get_object_or_404(Dictamenfinal, pk=dic_id)
         form = DictamenForm(instance=dictamen)
+        form = DictameneditadminForm(instance=dictamen)
         return render(request, 'dicdetalleadmin.html', {'dictamen': dictamen, 'form': form})   
+    elif request.method == 'POST':
+        dictamen = get_object_or_404(Dictamenfinal, pk=dic_id)
+        form = DictameneditadminForm(request.POST, instance=dictamen)
+        form.save()
+        return redirect('dictamenadmin')
+        return render(request, 'dicdetalleadmin.html', {'dictamen': dictamen, 'form': form, 'error': "Error actualiando Dictamen"})
     else:
         dictamen = get_object_or_404(Dictamenfinal, pk=dic_id)
         form = DictamenForm(request.POST, instance=dictamen)
-        form.save()
+        form.save()   
         return redirect('dictamenadmin')
 
 def dicdetallejefe(request, dic_id):
     if request.method == 'GET':
         dictamen = get_object_or_404(Dictamenfinal, pk=dic_id)
         form = DictamenForm(instance=dictamen)
+        form = DictameneditjefeForm(instance=dictamen)
         return render(request, 'dicdetallejefe.html', {'dictamen': dictamen, 'form': form})   
+    elif request.method == 'POST':
+        dictamen = get_object_or_404(Dictamenfinal, pk=dic_id)
+        form = DictameneditjefeForm(request.POST, instance=dictamen)
+        form.save()
+        return redirect('dictamenjefe')
+        return render(request, 'dicdetallejefe.html', {'dictamen': dictamen, 'form': form, 'error': "Error actualiando Dictamen"})
     else:
         dictamen = get_object_or_404(Dictamenfinal, pk=dic_id)
         form = DictamenForm(request.POST, instance=dictamen)

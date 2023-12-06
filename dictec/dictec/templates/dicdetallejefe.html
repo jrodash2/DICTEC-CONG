@@ -1,4 +1,4 @@
-{% extends 'baseadmin.html' %}
+{% extends 'basejefe.html' %}
 {% load static %}
 
 {% block content %}
@@ -37,10 +37,6 @@
           
 
 
-            <a href="{% url 'editdictamenjefe' dictamen.id %}" class="btn btn-warning gap-2">
-               
-                Editar
-            </a>
         </div>
         <div class="panel">
             <div class="flex flex-wrap justify-between gap-4 px-4">
@@ -115,7 +111,12 @@
         </div>
     </div>
     <!-- end main content section -->
-
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="rounded-lg py-2 px-4 text-center text-white bg-yellow-400 hover:bg-yellow-500">ACTUALIZAR</button>
+        
+    </form>
 </div>
 
 

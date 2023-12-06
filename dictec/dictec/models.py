@@ -44,7 +44,7 @@ class Dictamenfinal(models.Model):
   Analisis = models.TextField(max_length=1000)
   Proceso_Realizado = models.TextField(max_length=1000)
   Dictamen_Final = models.TextField(max_length=1000)
-  Creacion = models.DateTimeField(auto_now_add=True)
+  Creacion = models.DateTimeField('%Y/%m/%d', auto_now_add=True)
   Datecompleted = models.DateTimeField(null=True, blank=True)
   Pendiente = models.BooleanField(default=False)
   Imprimir = models.BooleanField(default=False)
