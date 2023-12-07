@@ -23,7 +23,18 @@ class Dictamen(models.Model):
   
   def __str__(self):
     return self.Titulo + ' - ' + self.user.username
-
+status_Revision = [
+  ('Corregido','Corregido'),
+  ('Corregido 2','Corregido 2'),
+  ('Corregido 3','Corregido 3'),
+  ('Modifcado','Modificado')
+]
+status_Revisionjefe = [
+  ('Pendiete','Pendiente'),
+  ('Pendiente 2','Pendiente 2'),
+  ('Pendiente 3','Pendiente 3'),
+  ('Aprobado','Aprobado')
+]
   
 class Dictamenfinal(models.Model):
   Titulo = models.CharField(max_length=200)
@@ -34,8 +45,8 @@ class Dictamenfinal(models.Model):
   Tipo_Equipo = models.CharField(max_length=80) 
   Marca = models.CharField(max_length=80)
   Modelo = models.CharField(max_length=80)
-  Revision = models.CharField(max_length=80, blank=True)
-  Revisionjefe = models.CharField(max_length=80, blank=True)
+  Revision = models.CharField(max_length=80, null=False, blank=True,choices=status_Revision)
+  Revisionjefe = models.CharField(max_length=80, null=False, blank=True,choices=status_Revisionjefe)
   Num_Serie = models.CharField(max_length=80)
   Caracteristicas = models.CharField(max_length=200)
   Comentario = models.CharField(max_length=300, blank=True)
@@ -49,7 +60,7 @@ class Dictamenfinal(models.Model):
   Pendiente = models.BooleanField(default=False)
   Imprimir = models.BooleanField(default=False)
   Creado = models.BooleanField(default=True)
-  imagen = models.ImageField(upload_to='static/img/%Y/%m/%d', null=True, blank=True)
+  imagen = models.ImageField(upload_to='static/img', null=True, blank=True)
   Finalizado = models.BooleanField(default=False)
   user = models.ForeignKey(User, on_delete=models.CASCADE)
   

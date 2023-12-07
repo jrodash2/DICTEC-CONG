@@ -2,14 +2,21 @@
 {% load static %}
 
 {% block content %}
+ <div class="py-5">
+<article class="container dark:bg-[#0e1726] bg-white shadow-2xl rounded-2xl p-5 ">
 
-<form method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <br>
-    <button>ACTUALIZAR</button>
-    
-</form>
+    <form method="POST" class="rounded-lg grid grid-cols-1 gap-y-7 bg-fixed place-content-around">
+        {% csrf_token %}
+        {{form.as_p}}
+     
+      
+        <div class="items-center">
+        <button class="rounded-lg py-2 px-4 text-center text-white bg-yellow-400 hover:bg-yellow-500">Guardar Cambios</button>
+    </div>
+    </form>
+</article>
+</div>
+
 
 <!-- <form action="/dictamen/" method="POST" class="DictamenForm">
         {% csrf_token %}

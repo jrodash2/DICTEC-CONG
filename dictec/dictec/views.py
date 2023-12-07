@@ -203,13 +203,12 @@ def editdictamenuser(request, dic_id):
         form = RespaldoForm(instance=dictamen)
         return render(request, 'editdictamenuser.html', {'dictamen': dictamen, 'form': form})  
     else:
-        try:
+        
             dictamen = get_object_or_404(Dictamenfinal, pk=dic_id)
             form = RespaldoForm(request.POST, instance=dictamen)
             form.save()
             return redirect('dictamen')
-        except: ValueError
-        return render(request, 'editdictamenuser.html', {'dictamen': dictamen, 'form': form, 'error': "Error actualiando Dictamen"})
+  
     
 def editdictamenadmin(request, dic_id):
     if request.method == 'GET':
