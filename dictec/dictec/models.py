@@ -60,7 +60,7 @@ class Dictamenfinal(models.Model):
   Pendiente = models.BooleanField(default=False)
   Imprimir = models.BooleanField(default=False)
   Creado = models.BooleanField(default=True)
-  imagen = models.ImageField(upload_to='static/img', null=True, blank=True)
+  imagen = models.ImageField(upload_to='media', null=True, blank=True)
   Finalizado = models.BooleanField(default=False)
   user = models.ForeignKey(User, on_delete=models.CASCADE)
   

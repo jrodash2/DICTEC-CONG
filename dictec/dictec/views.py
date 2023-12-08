@@ -203,11 +203,11 @@ def editdictamenuser(request, dic_id):
         form = RespaldoForm(instance=dictamen)
         return render(request, 'editdictamenuser.html', {'dictamen': dictamen, 'form': form})  
     else:
-        
-            dictamen = get_object_or_404(Dictamenfinal, pk=dic_id)
-            form = RespaldoForm(request.POST, instance=dictamen)
-            form.save()
-            return redirect('dictamen')
+        dictamen = get_object_or_404(Dictamenfinal, pk=dic_id)
+        form = RespaldoForm(request.POST, request.FILES, instance=dictamen)
+        form.save()
+        return redirect('dictamen')
+      
   
     
 def editdictamenadmin(request, dic_id):

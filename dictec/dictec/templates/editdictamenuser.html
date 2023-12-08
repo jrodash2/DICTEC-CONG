@@ -5,9 +5,9 @@
  <div class="py-5">
 <article class="container dark:bg-[#0e1726] bg-white shadow-2xl rounded-2xl p-5 ">
 
-    <form method="POST" class="rounded-lg grid grid-cols-1 gap-y-7 bg-fixed place-content-around">
+    <form method="POST" class="rounded-lg grid grid-cols-1 gap-y-7 bg-fixed place-content-around" enctype="multipart/form-data">
         {% csrf_token %}
-        {{form.as_p}}
+        {{form}}
      
       
         <div class="items-center">
