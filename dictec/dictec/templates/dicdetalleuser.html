@@ -13,12 +13,12 @@
             
           <a href="/dictamen/">
             
-        <button type="button" class="rounded-lg py-2 px-4 text-center text-white bg-yellow-500 hover:bg-sky-300" >
+        <button type="button" class="rounded-lg py-2 px-4 text-center text-white bg-blue-700 hover:bg-blue-300">
               
             Dictamenes
         </button></a>  
 
-            <button type="button" class="rounded-lg py-2 px-4 text-center text-white bg-sky-700  hover:bg-sky-300">
+            <button type="button" class="rounded-lg py-2 px-4 text-center text-white bg-blue-700 hover:bg-blue-300">
              
                 Imprimir
             </button>
@@ -35,28 +35,26 @@
           
 
 
-            <a href="{% url 'editdictamenuser' dictamen.id %}" class="btn btn-warning gap-2 hover:bg-sky-300">
+            <a href="{% url 'editdictamenuser' dictamen.id %}" class="rounded-lg py-2 px-4 text-center text-white bg-blue-700 hover:bg-blue-300">
                
                 Editar
             </a>
         </div>
         <div class="panel">
-            <div class="flex flex-wrap justify-between gap-4 px-4">
-                <div class="text-2xl font-semibold uppercase">{{dictamen.Titulo}} </div>
-               
-              
-                   
-            </div>
-            <img src="{% static 'img/Logo Congreso2.png' %}" alt="image" class="w-15 ltr:ml-auto rtl:mr-auto" />
-            
+
                 
             <div class="px-4 ">
-                <div class="mt-6 space-y-1 text-dark">
-                   
-                    <div>Nombre:  <b>{{dictamen.Nombre}}</b></div>
-                    <div>Oficina:  <b>{{dictamen.Oficina}}</b></div>
-                    <div>Dirección:  <b>{{dictamen.Direccion}}</b></div>
-                    <div>Fecha de Creación:  <b>{{dictamen.Creacion}}</b></div>
+                <div class="mt-6 space-y-1 text-dark ltr:ml-auto rtl:mr-auto items-center">
+                    <div class="col-md-12 ">
+                        <img src="{% static 'img/Logo Congreso2.png' %}" class="img-responsive" alt="titulo"/>
+                        <div class="h-30"></div> <br>
+                    </div>
+                    <div style="text-align: right;">Nombre:  <b>{{dictamen.Nombre}}</b></div>
+                    <div style="text-align: right;">Oficina:  <b>{{dictamen.Oficina}}</b></div>
+                    <div style="text-align: right;">Dirección:  <b>{{dictamen.Direccion}}</b></div>
+                    <div style="text-align: right;">Fecha de Creación:  <b>{{dictamen.Creacion}}</b></div>
+                    <div style="text-align: right;">Correlativo: <b>DIC-UT-{{dictamen.id}}</b> <b></b></div>
+                  
                     
                 </div>
                 <div style="text-align: right;">Dictamen Creado Por El Usuario:</div>
@@ -73,7 +71,7 @@
             <hr class="my-6 border-[#e0e6ed] dark:border-[#1b2e4b]" />
             <div class="flex flex-col flex-wrap justify-between gap-6 lg:flex-row">
                 <div class="flex-1">
-                    <div class="space-y-1 text-white-dark">
+                    <div class="space-y-1 text-black">
                         <div>Equipo:</div>
                         <div class="font-semibold text-black dark:text-white">{{dictamen.Tipo_Equipo}}</div>
                         <div>Marca:</div>
@@ -87,7 +85,7 @@
                     
                 </div>
                 <div class="flex-1">
-                    <div class="space-y-1 text-white-dark">
+                    <div class="space-y-1 text-black">
                         <div>Caracteristicas:</div>
                         <div class="font-semibold text-black dark:text-white">{{dictamen.Caracteristicas}}</div>
                         <div>Problema:</div>
@@ -118,7 +116,7 @@
         <br>
         <form  action="{% url 'complete_dic' dictamen.id %}" method="POST">
             {% csrf_token %}
-        <button class="btn btn-info hover:bg-sky-300">
+        <button class="rounded-lg py-2 px-4 text-center text-white bg-blue-700 hover:bg-blue-300">
           
             Finalizar Dictamen
         </button>

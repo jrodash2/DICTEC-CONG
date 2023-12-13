@@ -24,6 +24,26 @@
         class="relative overflow-x-hidden font-nunito text-sm font-normal antialiased"
         :class="[ $store.app.sidebar ? 'toggle-sidebar' : '', $store.app.theme === 'dark' || $store.app.isDarkMode ?  'dark' : '', $store.app.menu, $store.app.layout,$store.app.rtlClass]"
     >
+
+
+    <h1>Contrato de Prestación de Servicios</h1>
+    <div>         
+        <ul>
+           
+            <li>Función/Título: {{ dato.job_title }}</li>
+            <li>nombre completo: {{ dato.first_name }} {{ dato.last_name }}</li>
+            <li>Email: {{ dato.email }}</li>
+            <li>RFC: {{ dato.rfc }}</li>
+            <li>CURP: {{ dato.curp }}</li>
+            <li>Clabe: {{ dato.interbank_key }}</li>
+            <li>País:  {{ dato.country }}</li>
+            <li>Status:  {{ dato.status }}</li>
+            <li>Creado: {{dato.created}}</li>
+            
+        </ul>
+    </div>
+
+
         <!-- sidebar menu overlay -->
         <div x-cloak class="fixed inset-0 z-50 bg-[black]/60 lg:hidden" :class="{'hidden' : !$store.app.sidebar}" @click="$store.app.toggleSidebar()"></div>
 

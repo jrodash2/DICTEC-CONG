@@ -6,10 +6,12 @@
 <div class="animate__animated p-6" :class="[$store.app.animation]">
     <!-- start main content section -->
     <div x-data="invoicePreview">
-        <div class="mb-6 flex flex-wrap items-center justify-center gap-4 lg:justify-end">
+        
+        <div class="mb-20 flex flex-wrap items-center justify-center gap-4 lg:justify-end">
+            
           <a href="/dictamen/">
             
-        <button type="button" class="rounded-lg py-2 px-4 text-center text-white bg-yellow-400 hover:bg-yellow-500" >
+        <button type="button" class="rounded-lg py-2 px-4 text-center text-white bg-blue-700 hover:bg-blue-300" >
               
             Dictamenes
         </button></a>  
@@ -39,30 +41,31 @@
           
 
 
-            <a href="{% url 'editdictamen' dictamen.id %}" class="btn btn-warning gap-2">
+            <a href="{% url 'editdictamen' dictamen.id %}" class="rounded-lg py-2 px-4 text-center text-white bg-blue-700 hover:bg-blue-300">
                
                 Editar
             </a>
         </div>
-        <div class="panel">
-            <div class="flex flex-wrap justify-between gap-4 px-4">
-                <div class="text-2xl font-semibold uppercase">{{dictamen.Titulo}} </div>
-                
-              
-                   
-            </div>
-            <img src="{% static 'img/Logo Congreso2.png' %}" alt="image" class="w-15 ltr:ml-auto rtl:mr-auto" />
-            
-                
+        <div class="panel justify-between mb-11">
+        <!-- <div class="container align-text-left">
+            <img src="{% static 'img/Logo Congreso2.png' %}" alt="image" class="ltr:ml-auto rtl:mr-auto" />
+        </div> -->
+
+        
+            <div class="gap-4 px-4">
+
             <div class="px-4 ">
-                <div class="mt-6 space-y-1 text-dark">
-                   
-                    <div>Nombre:  <b>{{dictamen.Nombre}}</b></div>
-                    <div>Oficina:  <b>{{dictamen.Oficina}}</b></div>
-                    <div>Dirección:  <b>{{dictamen.Direccion}}</b></div>
-                    <div>Fecha de Creación:  <b>{{dictamen.Creacion}}</b></div>
-                    <div><img src="{{dictamen.image.url}}">Fecha de Creación:  <b></b></div>
-                    <img src="{{dictamen.image.url}}">
+                <div class="mt-6 space-y-1 text-dark ltr:ml-auto rtl:mr-auto items-center">
+                    <div class="col-md-12 ">
+                        <img src="{% static 'img/Logo Congreso2.png' %}" class="img-responsive" alt="titulo"/>
+                        <div class="h-30"></div> <br>
+                    </div>
+                    <div style="text-align: right;">Nombre:  <b>{{dictamen.Nombre}}</b></div>
+                    <div style="text-align: right;">Oficina:  <b>{{dictamen.Oficina}}</b></div>
+                    <div style="text-align: right;">Dirección:  <b>{{dictamen.Direccion}}</b></div>
+                    <div style="text-align: right;">Fecha de Creación:  <b>{{dictamen.Creacion}}</b></div>
+                    <div style="text-align: right;">Correlativo: <b>DIC-UT-{{dictamen.id}}</b> <b></b></div>
+                  
                     
                 </div>
                 <div style="text-align: right;">Dictamen Creado Por El Usuario:</div>
@@ -79,7 +82,7 @@
             <hr class="my-6 border-[#e0e6ed] dark:border-[#1b2e4b]" />
             <div class="flex flex-col flex-wrap justify-between gap-6 lg:flex-row">
                 <div class="flex-1">
-                    <div class="space-y-1 text-white-dark">
+                    <div class="space-y-1 text-black">
                         <div>Equipo:</div>
                         <div class="font-semibold text-black dark:text-white">{{dictamen.Tipo_Equipo}}</div>
                         <div>Marca:</div>

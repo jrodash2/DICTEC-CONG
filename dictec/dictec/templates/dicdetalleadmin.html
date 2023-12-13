@@ -9,7 +9,7 @@
         <div class="mb-6 flex flex-wrap items-center justify-center gap-4 lg:justify-end">
           <a href="/dictamenadmin/">
             
-        <button type="button" class="rounded-lg py-2 px-4 text-center text-white bg-yellow-400 hover:bg-yellow-500" >
+        <button type="button" class="rounded-lg py-2 px-4 text-center text-white bg-blue-700 hover:bg-blue-300">
               
             Dictamenes
         </button></a>  
@@ -43,24 +43,23 @@
             </a> -->
         </div>
         <div class="panel">
-            <div class="flex flex-wrap justify-between gap-4 px-4">
-                <div class="text-2xl font-semibold uppercase">{{dictamen.Titulo}} </div>
-                
-              
-                   
-            </div>
-            <img src="{% static 'img/Logo Congreso2.png' %}" alt="image" class="w-15 ltr:ml-auto rtl:mr-auto" />
-            
+
                 
             <div class="px-4 ">
-                <div class="mt-6 space-y-1 text-dark">
-                   
-                    <div>Nombre:  <b>{{dictamen.Nombre}}</b></div>
-                    <div>Oficina:  <b>{{dictamen.Oficina}}</b></div>
-                    <div>Dirección:  <b>{{dictamen.Direccion}}</b></div>
-                    <div>Fecha de Creación:  <b>{{dictamen.Creacion}}</b></div>
-                    
-                </div>
+                <div class="px-4 ">
+                    <div class="mt-6 space-y-1 text-dark ltr:ml-auto rtl:mr-auto items-center">
+                        <div class="col-md-12 ">
+                            <img src="{% static 'img/Logo Congreso2.png' %}" class="img-responsive" alt="titulo"/>
+                            <div class="h-30"></div> <br>
+                        </div>
+                        <div style="text-align: right;">Nombre:  <b>{{dictamen.Nombre}}</b></div>
+                        <div style="text-align: right;">Oficina:  <b>{{dictamen.Oficina}}</b></div>
+                        <div style="text-align: right;">Dirección:  <b>{{dictamen.Direccion}}</b></div>
+                        <div style="text-align: right;">Fecha de Creación:  <b>{{dictamen.Creacion}}</b></div>
+                        <div style="text-align: right;">Correlativo: <b>DIC-UT-{{dictamen.id}}</b> <b></b></div>
+                      
+                        
+                    </div>
                 <div style="text-align: right;">Dictamen Creado Por El Usuario:</div>
                 <p class="font-semibold text-black dark:text-white" style="text-align: right;"><b>{{dictamen.user}}</p>
 
@@ -128,7 +127,7 @@
          
           
             <div class="items-center">
-            <button class="rounded-lg py-2 px-4 text-center text-white bg-yellow-400 hover:bg-yellow-500">Guardar Cambios</button>
+            <button class="rounded-lg py-2 px-4 text-center text-white bg-blue-700 hover:bg-blue-300">Guardar Cambios</button>
         </div>
         </form>
     </article>
