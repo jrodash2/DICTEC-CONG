@@ -9,17 +9,20 @@
 
     <article class="container dark:bg-[#0e1726] bg-white shadow-2xl rounded-2xl p-5 ">
 <div class="text-sm text-gray-500">
-<div class="px-4 ">
+<div class="px-45 ">
     
     <div class="mt-6 space-y-1 text-black ">
-        <span class="w-full lg:w-1/2 align-middle text-2xl font-semibold ltr:ml-1.5 rtl:mr-1.5 dark:text-white-light lg:inline justify-between place-content-center">CREAR NUEVO DICTAMEN</span><br>
-    <form action="/dictamen/create/" method="POST" class="rounded-lg grid grid-cols-2 gap-2 bg-fixed place-content-center">
+        <div class="container">
+        <span class="w-full lg:w-1/2 align-middle text-2xl font-Monseratt ltr:ml-1.5 rtl:mr-1.5 dark:text-white-light lg:inline items-center place-content-center"><b>CREAR NUEVO DICTAMEN</b></span>
+    </div>
+        <br><br>
+    <form action="/dictamen/create/" method="POST" class="rounded-lg grid grid-cols-2 gap-4 px-10 bg-fixed place-content-center">
         {% csrf_token %}
 
   
         {{form.as_p}}
 <div>
-<button class="rounded-lg py-8 px-8 text-center text-white bg-yellow-400 hover:bg-yellow-500 place-content-center">
+<button class="rounded-lg py-8 px-8 text-center text-white bg-blue-700 hover:bg-yellow-500 place-content-center">
     <h1>Crear</h1>
 </button/>
 </div>

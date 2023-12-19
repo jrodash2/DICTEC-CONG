@@ -341,9 +341,10 @@
         <div class="main-container min-h-screen text-black dark:text-white-dark" :class="[$store.app.navbar]">
                                             <!-- horizontal menu -->
                                             <ul
-                                            class="horizontal-menu hidden border-t border-[#ebedf2] bg-white px-6 py-1.5 font-semibold text-black rtl:space-x-reverse dark:border-[#191e3a] dark:bg-[#0e1726] dark:text-white-dark lg:space-x-1.5 xl:space-x-8"
+                                            class="horizontal-menu hidden border-t border-[#ebedf2] bg-blue-700 px-6 py-1.5 font-semibold text-black rtl:space-x-reverse dark:border-[#191e3a] dark:bg-[#0e1726] dark:text-white-dark lg:space-x-1.5 xl:space-x-8"
                                         >
-                                           
+                                        <img src="{% static 'img/Logo Congreso28.png' %}" class="img-responsive" alt=""/>
+
                                             <li class="menu nav-item relative">
                                                 <a href="/" class="nav-link">
                                                     <div class="flex items-center">
@@ -561,7 +562,7 @@
                                                 </a>
                                             </div>  -->
             <br> <br> <br> <div class="flex flex-col items-center md:items-start">
-                   <p class="text-base font-medium text-gray-400">Bienvenido Usuario: <b>{{user.username}}</b> </p>
+                   <p class="text-base font-medium text-white">Bienvenido Usuario: <b>{{user.username}}</b> </p>
             </div>
             
                                            <div class="dropdown flex-shrink-0" x-data="dropdown" @click.outside="open = false">

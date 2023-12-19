@@ -10,11 +10,12 @@ from .forms import DictameneditjefeForm
 from .forms import Dictameneditjefe2Form
 from .forms import RevisionForm
 from .forms import RespaldoForm
-from .models import Dictamenfinal
+from .models import Dictamen, Dictamenfinal
 from django.utils import timezone
 from django.urls import reverse
 from django.contrib.auth.hashers import make_password
 from django. contrib import messages
+from datetime import datetime
 
 # Create your views here.
 
@@ -51,7 +52,7 @@ def home(request):
     return render(request, 'home.html')
 
 def dictamen(request):
-    dictamens = Dictamenfinal.objects.filter(user=request.user, Datecompleted__isnull=True)
+    dictamens = Dictamenfinal.objects.filter(user=request.user, Datecompleted__isnull=True).order_by("-Creacion")
     return render(request, 'dictamen.html', {'dictamens': dictamens})
 
 def dictamenadmin(request):
