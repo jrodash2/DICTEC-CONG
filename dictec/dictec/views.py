@@ -56,60 +56,60 @@ def dictamen(request):
     return render(request, 'dictamen.html', {'dictamens': dictamens})
 
 def dictamenadmin(request):
-    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True)
+    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True).order_by("-Creacion")
     return render(request, 'dictamenadmin.html', {'dictamens': dictamens})
 
 def dictamenjefe(request):
-    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True)
+    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True).order_by("-Creacion")
     return render(request, 'dictamenjefe.html', {'dictamens': dictamens})
 
 def dictamen_creado(request):
-    dictamens = Dictamenfinal.objects.filter(user=request.user, Datecompleted__isnull=True,Creado__isnull=False).exclude(Pendiente=True)
+    dictamens = Dictamenfinal.objects.filter(user=request.user, Datecompleted__isnull=True,Creado__isnull=False).exclude(Pendiente=True).order_by("-Creacion")
    
     return render(request, 'dictamen_creado.html', {'dictamens': dictamens})
 
 def dictamen_creadoadmin(request):
-    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True, Creado__isnull=False).exclude(Pendiente=True)
+    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True, Creado__isnull=False).exclude(Pendiente=True).order_by("-Creacion")
     return render(request, 'dictamen_creadoadmin.html', {'dictamens': dictamens})
 
 def dictamen_creadojefe(request):
-    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True, Creado__isnull=False).exclude(Pendiente=True)
+    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True, Creado__isnull=False).exclude(Pendiente=True).order_by("-Creacion")
     return render(request, 'dictamen_creadojefe.html', {'dictamens': dictamens})
 
 def dictamen_pendiente(request):
-    dictamens = Dictamenfinal.objects.filter(user=request.user, Datecompleted__isnull=True).exclude(Imprimir=True)
+    dictamens = Dictamenfinal.objects.filter(user=request.user, Datecompleted__isnull=True).exclude(Imprimir=True).order_by("-Creacion")
     return render(request, 'dictamen_pendiente.html', {'dictamens': dictamens})
 
 def dictamen_pendienteadmin(request):
-    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True).exclude(Imprimir=True)
+    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True).exclude(Imprimir=True).order_by("-Creacion")
     return render(request, 'dictamen_pendienteadmin.html', {'dictamens': dictamens})
 
 def dictamen_pendientejefe(request):
-    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True).exclude(Imprimir=True)
+    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True).exclude(Imprimir=True).order_by("-Creacion")
     return render(request, 'dictamen_pendientejefe.html', {'dictamens': dictamens})
 
 def dictamen_imprimir(request):
-    dictamens = Dictamenfinal.objects.filter(user=request.user, Datecompleted__isnull=True, Imprimir__isnull=False)
+    dictamens = Dictamenfinal.objects.filter(user=request.user, Datecompleted__isnull=True, Imprimir__isnull=False).order_by("-Creacion")
     return render(request, 'dictamen_imprimir.html', {'dictamens': dictamens})
 
 def dictamen_imprimiradmin(request):
-    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True, Imprimir__isnull=False)
+    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True, Imprimir__isnull=False).order_by("-Creacion")
     return render(request, 'dictamen_imprimiradmin.html', {'dictamens': dictamens})
 
 def dictamen_imprimirjefe(request):
-    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True, Imprimir__isnull=False)
+    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True, Imprimir__isnull=False).order_by("-Creacion")
     return render(request, 'dictamen_imprimirjefe.html', {'dictamens': dictamens})
 
 def dictamen_finalizado(request):
-    dictamens = Dictamenfinal.objects.filter(user=request.user, Datecompleted__isnull=True, Finalizado__isnull=False)
+    dictamens = Dictamenfinal.objects.filter(user=request.user, Datecompleted__isnull=False).order_by("-Creacion")
     return render(request, 'dictamen_finalizado.html', {'dictamens': dictamens})
 
 def dictamen_finalizadoadmin(request):
-    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True, Finalizado__isnull=False)
+    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=False, Finalizado__isnull=False).order_by("-Creacion")
     return render(request, 'dictamen_finalizadoadmin.html', {'dictamens': dictamens})
 
 def dictamen_finalizadojefe(request):
-    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=True, Finalizado__isnull=False)
+    dictamens = Dictamenfinal.objects.filter(Datecompleted__isnull=False, Finalizado__isnull=False).order_by("-Creacion")
     return render(request, 'dictamen_finalizadojefe.html', {'dictamens': dictamens})
 
 

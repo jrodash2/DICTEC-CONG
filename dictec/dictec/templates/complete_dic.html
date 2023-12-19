@@ -1,4 +1,4 @@
-{% extends 'basejefe.html' %}
+{% extends 'base.html' %}
 {% load static %}
 {% block content %}
 
@@ -51,7 +51,7 @@
                             <div class="perfect-scrollbar relative -mr-3.5 h-full grow pr-3.5">
                                 <div class="space-y-1">
                                     <button
-                                        type="button" onclick="location.href='/dictamenjefe/'"
+                                        type="button" onclick="location.href='/dictamen/'"
                                         class="flex h-10 w-full items-center justify-between rounded-md p-2 font-medium hover:bg-white-dark/10 hover:text-primary dark:hover:bg-[#181F32] dark:hover:text-primary"
                                      
                                     >
@@ -94,7 +94,7 @@
 
                                     <button
                                     type="button"
-                                    class=" category_item flex h-10 w-full items-center rounded-md p-1 font-medium text-primary duration-300 hover:bg-white-dark/10 ltr:hover:pl-3 rtl:hover:pr-3 dark:hover:bg-[#181F32]" onclick="location.href='/creadojefe/'"
+                                    class=" category_item flex h-10 w-full items-center rounded-md p-1 font-medium text-primary duration-300 hover:bg-white-dark/10 ltr:hover:pl-3 rtl:hover:pr-3 dark:hover:bg-[#181F32]" onclick="location.href='/creado/'"
                                  
                                 >
                                 <svg
@@ -118,7 +118,7 @@
                                     
                                     <button
                                     type="button" 
-                                    class=" category_item flex h-10 w-full items-center rounded-md p-1 font-medium text-warning duration-300 hover:bg-white-dark/10 ltr:hover:pl-3 rtl:hover:pr-3 dark:hover:bg-[#181F32]" onclick="location.href='/pendientejefe/'"
+                                    class=" category_item flex h-10 w-full items-center rounded-md p-1 font-medium text-warning duration-300 hover:bg-white-dark/10 ltr:hover:pl-3 rtl:hover:pr-3 dark:hover:bg-[#181F32]" onclick="location.href='/pendiente/'"
                                       
                                     >
                                         <svg
@@ -139,7 +139,7 @@
                                     </button>
 
                                     <button
-                                    type="button" onclick="location.href='/imprimirjefe/'"
+                                    type="button" onclick="location.href='/imprimir/'"
                                     class=" category_item flex h-10 w-full items-center rounded-md p-1 font-medium text-info duration-300 hover:bg-white-dark/10 ltr:hover:pl-3 rtl:hover:pr-3 dark:hover:bg-[#181F32]"
                                       
                                     >
@@ -161,7 +161,7 @@
                                     </button>
 
                                     <button
-                                    type="button" onclick="location.href='/finalizadojefe/'"
+                                    type="button" onclick="location.href='/finalizado/'"
                                     class=" category_item flex h-10 w-full items-center rounded-md p-1 font-medium text-danger duration-300 hover:bg-white-dark/10 ltr:hover:pl-3 rtl:hover:pr-3 dark:hover:bg-[#181F32]"
                                       
                                     >
@@ -218,19 +218,21 @@
                         
                                                
                                   
-                
+
+                                            
                         
                         </div>
                        
                         
                         </div>
                         <article class="container dark:bg-[#0e1726] bg-white shadow-2xl rounded-2xl p-5 ">
-                            {% if dictamen.Datecompleted %}
-                            <h1 class="font-extrabold font-['Arial'] text-danger ">{{dictamen.Titulo}}</h1>
-                            <div>Correlativo: <b>DIC-UT-{{dictamen.id}}</b> <b></b></div>
-<h3 class="text-sm text-gray-500">{{dictamen.Oficina}}</h3> 
-<h6 class="text-sm text-gray-500">{{dictamen.Creacion}}</h6><br>
-                            <a href="{% url 'dicdetalle' dictamen.id %}" class="rounded-lg py-2 px-4 text-center text-white bg-blue-700 hover:bg-blue-300">Ver Dictamen</a>
+                            {% if dictamen.Finalizado %}
+                            <h1 class="font-extrabold font-['Arial'] text-info ">{{dictamen.Titulo}}</h1>
+                            <h3 class="text-sm text-gray-500">{{dictamen.Oficina}}</h3>
+                            <h6 class="text-sm text-gray-500">{{dictamen.Direccion}}</h6>
+                            <p class="font-light text-gray-500 hover:font-bold"><h3> Creado por:  {{dictamen.user}}</h3></p><br>
+                           
+                            <a href="{% url 'dicdetalle' dictamen.id %}" class="rounded-lg py-2 px-4 text-center text-white bg-yellow-400 hover:bg-yellow-500">Ver Dictamen</a>
                             {% endif %}
                             </article>
             </section>

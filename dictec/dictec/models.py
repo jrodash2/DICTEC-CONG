@@ -30,7 +30,7 @@ status_Revision = [
   ('Modifcado','Modificado')
 ]
 status_Revisionjefe = [
-  ('Pendiete','Pendiente'),
+  ('Pendiente','Pendiente'),
   ('Pendiente 2','Pendiente 2'),
   ('Pendiente 3','Pendiente 3'),
   ('Aprobado','Aprobado')
